@@ -20,7 +20,6 @@ export function NewGroup({ }: Props) {
         />
         <Button
           title='Criar'
-          type='SECUNDARY'
         />
       </Content>
     </Container>
