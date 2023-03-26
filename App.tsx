@@ -2,11 +2,10 @@ import { StatusBar } from 'react-native';
 import { ThemeProvider } from 'styled-components'
 import { useFonts, Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto'
 
-import theme from './src/theme'
-
-import { Groups } from '@screens/Groups';
+import { NewGroup } from '@screens/NewGroup';
 import { Loading } from '@components/Loading';
 
+import theme from './src/theme'
 
 export default function App() {
   const [fontsLoades] = useFonts({
@@ -22,7 +21,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      {fontsLoades ? <Groups /> : <Loading />}
+      {fontsLoades ? <NewGroup /> : <Loading />}
     </ThemeProvider>
   );
 }
