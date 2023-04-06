@@ -1,4 +1,4 @@
-
+import { useRoute } from '@react-navigation/native'
 import { FlatList } from 'react-native'
 import { useState } from 'react'
 
@@ -14,13 +14,16 @@ import { ListEmpty } from '@components/ListEmpty'
 import { Button } from '@components/Button'
 
 
-type Props = {
+type RouteParams = {
+  group: string;
 }
 
-export function Players({ }: Props) {
+export function Players() {
   const [team, setTeam] = useState('Time A')
-  // const [players, setPlayers] = useState(['Gab', 'Gir', 'Rafa', 'Yellow', 'Green', 'Red', 'Blue', 'Purple'])
   const [players, setPlayers] = useState([])
+
+  const route = useRoute()
+  const { group } = route.params as RouteParams
 
 
   return (
@@ -28,7 +31,7 @@ export function Players({ }: Props) {
       <Header showBackButton />
 
       <Highlight
-        title='Nova da Turma'
+        title={group}
         subTitle='adicione a galera e separe os times'
       />
 
@@ -42,7 +45,7 @@ export function Players({ }: Props) {
 
       <HeaderList>
         <FlatList
-          data={['Time A', 'Time B']}
+          data={players}
           keyExtractor={item => item}
           renderItem={({ item }) => (
             <Filter
